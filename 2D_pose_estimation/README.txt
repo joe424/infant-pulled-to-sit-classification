@@ -21,12 +21,10 @@
     * estimate嬰兒2D骨架，並儲存成pkl、json、圖片、影片
 * lighttrack/detector/detector_yolov3.py
     * infant detector
-    * 使用https://github.com/eriklindernoren/PyTorch-YOLOv3做為訓練的code
+    * 使用https://github.com/eriklindernoren/PyTorch-YOLOv3 做為訓練的code
     * 使用lighttrack/weights/yolov3_ckpt161_subdiv_4_lr_0_0001_dev_0.pth做為weight
 * lighttrack/dcpose/tools/inference.py
     * 2D pose estimation model
-    * 使用https://github.com/Pose-Group/DCPose中的HRNet做為訓練的code
+    * 使用https://github.com/Pose-Group/DCPose 中的HRNet做為訓練的code
         * config可見./lighttrack/dcpose/configs/posetimation/DcPose/posetrack18/model_HRnet.yaml
     * 使用lighttrack/weights/epoch_37_state_optimize_HRNet.pth做為weight
-* 缺什麼package裝什麼
-* 在安裝package中比較特別的是torchlight，不能透過pip或conda，要透過cd ./lighttrack/graph/torchlight，再python setup.py install

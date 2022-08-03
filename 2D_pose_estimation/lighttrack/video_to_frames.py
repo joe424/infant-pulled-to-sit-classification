@@ -16,19 +16,12 @@ parser.add_argument('--video_dir', '-v', type=str, dest='video_dir', default="..
 parser.add_argument('--frame_dir', '-f', type=str, dest='frame_dir', default="../frames")
 args = parser.parse_args()
 
-# data_root = osp.abspath("/home/mbl/HDD_disk/infant_video/實驗收案")
-# video_root = osp.join(data_root,'20210412_prone')
-# destination_root = osp.join(data_root,"20210412_prone_frames")
-
 video_root = args.video_dir
 destination_root = args.frame_dir
 
 # parameters 
 frame_stride = 1  # Write a frame in every 5 frames. 
                   # e.q. if frame_stride = 5, a video(with 30 frames) --converted to--> 6 frames
-
-# /home/mbl/HDD_disk/infant_video/實驗收案/HPE_dataset/out/hrnet/jsons
-# check_root = "/home/mbl/HDD_disk/infant_video/實驗收案/HPE_dataset/"
 
 # Optional parameters
 # skip videos matching kewords in {videos2skip_list}.
