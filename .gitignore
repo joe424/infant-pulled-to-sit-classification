@@ -1,14 +1,8 @@
 2D_pose_estimation/blind_test_videos/
-2D_pose_estimation/lighttrack/weights/*
-2D_pose_estimation/lighttrack/test_show_bbx/*
-2D_pose_estimation/lighttrack/data/demo/*
+2D_pose_estimation/lighttrack/test_show_bbx/
+2D_pose_estimation/lighttrack/data/demo/
+2D_pose_estimation/lighttrack/README.md
 2D_pose_estimation/out/
 2D_pose_estimation/frames/
-2D_pose_estimation/videos/pull_to_sit/*
-2Dto3D/input/*
 2Dto3D/input_ex/
-2Dto3D/model/*
-2Dto3D/output2d/*
-2Dto3D/output3d/*
 classification/KMU_hospital_infant_pulled_to_sit_data/
-classification/weight/*
