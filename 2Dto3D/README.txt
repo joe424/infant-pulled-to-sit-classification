@@ -1,5 +1,3 @@
-* Python 3.7.13
-* Pytorch 1.7.1+cu110
 * 檔案'config.ini'設定下面流程的資料夾的路徑
 * 流程如下
     * 放在'INPUT_FOLDER_PATH'資料夾中的json檔案會由'2Dto3D.py'進行2D轉3D
