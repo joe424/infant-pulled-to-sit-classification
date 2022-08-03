@@ -17,3 +17,4 @@ conda install -c anaconda h5py
 conda install -c anaconda scikit-learn
 
 * weight data and dataset can be get at https://drive.google.com/drive/folders/1e3ySedgC0dx4d6g9DAYxSouz3g1H4SHY?usp=sharing
+* put videos under 2D_pose_estimation/videos/pull_to_sit/, then python run.py
