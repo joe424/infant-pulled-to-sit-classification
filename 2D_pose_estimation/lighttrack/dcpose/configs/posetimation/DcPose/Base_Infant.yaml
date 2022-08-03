@@ -1,0 +1,144 @@
+WORKERS: 1  # depends on children setting
+PRINT_FREQ: 100
+DISTANCE: 2
+
+DATASET:
+  NAME: "Infant"
+  JSON_DIR: "/home/mbl/HDD_disk/infant_video/實驗收案/HPE_dataset/Pull_to_sit_20210412_5sec_ann"
+  IMG_DIR: "/home/mbl/HDD_disk/infant_video/實驗收案/HPE_dataset/Pull_to_sit_20210412_5sec"
+  TEST_IMG_DIR: "/home/mbl/HDD_disk/infant_video/實驗收案/HPE_dataset/Pull_to_sit_20210412_5sec"
+  IS_POSETRACK18: false
+  COLOR_RGB: true
+  DATASET: 'posetrack'
+  ROOT: ''
+  INPUT_TYPE: 'spatiotemporal_window'
+  BBOX_ENLARGE_FACTOR: 1.25
+
+MODEL:
+  FREEZE_HRNET_WEIGHTS: true
+  EVALUATE: true
+  INIT_WEIGHTS: true
+
+  NUM_JOINTS: 17
+
+  ### finetuned backbone
+  ## backbone pretrained in COCO 
+  PRETRAINED: "/home/mbl/infant_development_evaluation_project/pose_estimation/dcpose/supp/pretrained_models/pretrained_coco_model.pth"
+  ## backbone finetuned in posetrack18
+  PRETRAINED_FULLSET: "/home/mbl/infant_development_evaluation_project/pose_estimation/dcpose/supp/pretrained_models/pretrained_coco_model.pth"
+  #'/home/auser02/yiyuan/supp_files/pretrained_models/hrnetPred_ep0.pth'  #'/home/auser02/yiyuan/DCPose/output/PE/HRnetGC_pred/HRNetGC_GTpred/PoseTrackMH/Fullset/lr_-5e5_bbox_1.25_rot_45_scale_0.65-1.35/checkpoints/epoch_1_state.pth' #'/home/auser02/yiyuan/supp_files/pretrained_models/hrnetPred_ep0.pth'  # '/home/auser02/yiyuan/supp_files/pretrained_models/HRnet_finetuned_fullset_ep15.pth' 
+  PRETRAINED_SUBSET: '/home/auser02/yiyuan/supp_files/pretrained_models/hrnet_fintuned_in_subset.pth'
+  
+  #keypaper model
+  # PRETRAINED: '/home/auser02/yiyuan/DCPose/output/PE/DcPose/DCPose_Network_Model_RSN/PoseTrack18/chPRF_34_nPRF_2_chPTM_17_nPTM_1_chComb_64_nComb_2_D_3,6,9,12,15/checkpoints/epoch_10_state.pth'
+  # My model
+  # PRETRAINED: '/home/auser02/yiyuan/DCPose/output/PE/DcPose/DCPose_Network_Model_RSN_midLker/PoseTrack18/chPRF_34_nPRF_2_chPTM_17_nPTM_1_chComb_64_nComb_2_D_3,6,9,12,15/checkpoints/epoch_7_state.pth'
+  
+  TARGET_TYPE: gaussian
+  IMAGE_SIZE:
+    - 288
+    - 384
+  HEATMAP_SIZE:
+    - 72
+    - 96
+  SIGMA: 3
+  USE_RECTIFIER: true
+
+  EXTRA:
+    UES_HRNetMH_PRED_VIS_INPUT: false
+    PRETRAINED_LAYERS:
+      - '*'
+    FINAL_CONV_KERNEL: 1
+    STAGE2:
+      NUM_MODULES: 1
+      NUM_BRANCHES: 2
+      BLOCK: BASIC
+      NUM_BLOCKS:
+        - 4
+        - 4
+      NUM_CHANNELS:
+        - 48
+        - 96
+      FUSE_METHOD: SUM
+    STAGE3:
+      NUM_MODULES: 4
+      NUM_BRANCHES: 3
+      BLOCK: BASIC
+      NUM_BLOCKS:
+        - 4
+        - 4
+        - 4
+      NUM_CHANNELS:
+        - 48
+        - 96
+        - 192
+      FUSE_METHOD: SUM
+    STAGE4:
+      NUM_MODULES: 3
+      NUM_BRANCHES: 4
+      BLOCK: BASIC
+      NUM_BLOCKS:
+        - 4
+        - 4
+        - 4
+        - 4
+      NUM_CHANNELS:
+        - 48
+        - 96
+        - 192
+        - 384
+      FUSE_METHOD: SUM
+    DECONV:
+      NUM_DECONVS: 1
+      NUM_CHANNELS:
+        - 48
+      KERNEL_SIZE:
+        - 4
+      NUM_BASIC_BLOCKS: 4
+      CAT_OUTPUT:
+        - True
+
+TRAIN:
+  FLIP: true
+  NUM_JOINTS_HALF_BODY: 8
+  PROB_HALF_BODY: 0.3
+  ROT_FACTOR: 45
+  SCALE_FACTOR: [ 0.35,0.35 ]
+  SHUFFLE: true
+  BEGIN_EPOCH: 0
+  END_EPOCH: 201
+  OPTIMIZER: adam
+  LR: 0.0001
+  LR_FACTOR: 0.1
+  MILESTONES:
+    - 4
+    - 8
+    - 12
+    - 16
+  GAMMA: 0.99
+
+  NESTEROV: false
+
+VAL:
+  ANNOT_DIR: '/home/mbl/HDD_disk/infant_video/實驗收案/HPE_dataset/Pull_to_sit_20210412_5sec_ann'
+  COCO_BBOX_FILE: '/home/mbl/HDD_disk/infant_video/實驗收案/HPE_dataset/Pull_to_sit_20210412_5sec_ann/val_0412PTS_5sec.json'
+  USE_GT_BBOX: True
+  BBOX_THRE: 1.0
+  IMAGE_THRE: 0.2
+  IN_VIS_THRE: 0.2
+  NMS_THRE: 1.0
+  OKS_THRE: 0.9
+  FLIP_VAL: false
+  POST_PROCESS: true
+
+TEST:
+  ANNOT_DIR: './supp/posetrack18_annotation_dirs/test'
+  COCO_BBOX_FILE: './supp/posetrack18_precomputed_boxes/test_boxes.json'
+  USE_GT_BBOX: false
+  BBOX_THRE: 1.0
+  IMAGE_THRE: 0.2
+  IN_VIS_THRE: 0.2
+  NMS_THRE: 1.0
+  OKS_THRE: 0.9
+  FLIP_TEST: true
+  POST_PROCESS: true
