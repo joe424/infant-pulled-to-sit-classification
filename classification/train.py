@@ -68,7 +68,7 @@ def summary(CM, num_class):
 
 total_time_start = time.time()
 
-setup_seed(2022)
+setup_seed(0)
 
 # parameters
 weight_folder = './weight'
@@ -83,7 +83,7 @@ levels = ['L0', 'L1', 'L3']
 frames = [frame for frame in range(SAME_FRAME)]
 num_point = 3
 device = 0
-golden_standard_equally_distributed = True
+golden_standard_equally_distributed = False
 
 if num_point == 5:
     joints = ['nose', 'rshoulder', 'lshoulder', 'rhip', 'lhip']
