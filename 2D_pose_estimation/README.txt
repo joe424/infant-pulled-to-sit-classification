@@ -9,6 +9,7 @@
         * json檔
         * 基本上裡面的東西和pkl檔相同
         * 比pkl檔多一個資訊:估測出的關節點的confidence
+        * 將檔案放到../2Dto3D/input使2D骨架轉成3D骨架
     * visualize/
         * 估測出的骨架弄成圖片(把./lighttrack/demo_video_mobile_hrnet.py中的flag_visualize設為True，會比較耗時)
     * videos/
