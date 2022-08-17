@@ -498,7 +498,7 @@ for turn in turns:
         test_accuracy /= count
         scheduler.step()
 
-        # print result
+        # print result, pick the best test accuracy as result and save the model
         if test_accuracy > best_test_accuracy[turn]:
             y_pred_epoch = y_pred_tmp ###
             y_actual_epoch = y_actual_tmp ###

@@ -230,7 +230,7 @@ if __name__ == '__main__':
     output_path_2d = cf.get('PATH', 'OUTPUT2D_FOLDER_PATH')
     output_path_3d = cf.get('PATH', 'OUTPUT3D_FOLDER_PATH')
     
-    # load
+    # load model
     stats = np.load(os.path.join(model_path, 'stats.npy'), allow_pickle=True).item()
     data_mean_2d = stats['mean_2d']
     dim_to_use_2d = stats['dim_use_2d']
@@ -320,7 +320,7 @@ if __name__ == '__main__':
         pred_list = sf_pred_list
         pred_list = pred_list.reshape(-1, 1, 96)
 
-        # transpose
+        # transformation on template
         p = np.empty([0, 3])
         for frame in range(SAME_FRAME):
             p = np.concatenate(( p, np.expand_dims( pred_list[frame].reshape(32, 3)[25], axis=0 ) ), axis=0)

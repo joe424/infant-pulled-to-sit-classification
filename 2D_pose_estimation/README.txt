@@ -23,8 +23,10 @@
     * infant detector
     * 使用https://github.com/eriklindernoren/PyTorch-YOLOv3 做為訓練的code
     * 使用lighttrack/weights/yolov3_ckpt161_subdiv_4_lr_0_0001_dev_0.pth做為weight
+    * (也可使用lighttrack/weights/yolov3_ckpt80.pth，但其訓練資料較少)
 * lighttrack/dcpose/tools/inference.py
     * 2D pose estimation model
     * 使用https://github.com/Pose-Group/DCPose 中的HRNet做為訓練的code
         * config可見./lighttrack/dcpose/configs/posetimation/DcPose/posetrack18/model_HRnet.yaml
     * 使用lighttrack/weights/epoch_37_state_optimize_HRNet.pth做為weight
+    * (也可使用lighttrack/weights/epoch_45_state.pth，但其訓練資料較少)
