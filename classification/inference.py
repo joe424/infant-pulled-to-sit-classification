@@ -64,7 +64,7 @@ else:
     assert 0, 'not support is2d and num_point'
 
 npy_path = './samples'
-weight_path = './weight/model.pt'
+weight_path = './weight/fold2_2022.pt'
 
 model = Model(num_class=num_class, num_point=num_point, num_person=1, graph=graph_file,
           in_channels=in_channels, out_channels=out_channels, frames=frame_num).cuda()
