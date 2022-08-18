@@ -8,9 +8,9 @@
     * 放投影回2D骨架的地方
 * weights/
     * pulled-to-sit level分類的網路
-        * model.pt
+        * foldx_2022.pt
             * 由 KMU_hospital_infant_pulled_to_sit_data/pulled-to-sit_2022/ 訓練而來
-        * model1.pt
+        * foldx.pt
             * 由 KMU_hospital_infant_pulled_to_sit_data/pulled-to-sit/ 訓練而來
 * inference.py
     * 將投影回2D骨架做pulled-to-sit的分類
