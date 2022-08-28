@@ -17,15 +17,15 @@
     conda install -c anaconda scikit-learn
 
 ## download data
-weight data and dataset can be get at 
-https://drive.google.com/drive/folders/1e3ySedgC0dx4d6g9DAYxSouz3g1H4SHY?usp=sharing
-and then
+weight data and dataset can be get at
+https://drive.google.com/drive/folders/1e3ySedgC0dx4d6g9DAYxSouz3g1H4SHY?usp=sharing<br>
+and then<br>
     sh move_data.sh
 
 ## train classification model
     cd classification; python train.py
 
 ## classify pulled-to-sit level
-put videos under 2D_pose_estimation/videos/pull_to_sit/
-and then
+put videos under 2D_pose_estimation/videos/pull_to_sit/<br>
+and then<br>
     python run.py
