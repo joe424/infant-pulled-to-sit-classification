@@ -20,6 +20,7 @@
 weight data and dataset can be get at
 https://drive.google.com/drive/folders/1e3ySedgC0dx4d6g9DAYxSouz3g1H4SHY?usp=sharing<br>
 and then<br>
+
     sh move_data.sh
 
 ## train classification model
@@ -28,4 +29,5 @@ and then<br>
 ## classify pulled-to-sit level
 put videos under 2D_pose_estimation/videos/pull_to_sit/<br>
 and then<br>
+
     python run.py
